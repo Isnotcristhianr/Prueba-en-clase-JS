@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- INVOCACION DE CSS Y JS-->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/botones.css" rel="stylesheet">
+<script src="assets/js/est.js"></script>
+<script src="assets/js/funciones.js"></script>
+<script src="assets/js/jquery3.0.6.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <div id="datos"></div>
+    <div id="datos1"></div>
+
+    <script>
+
+        let tabla = "<table class = 'table'>";
+
+        for (var i = 0; i < 5; i++) {
+            tabla += "<tr>";
+            for (var j = 0; j < 3; j++) {
+                tabla += "<td>" + j + "</td>";
+            }
+            tabla += "</tr>";
+        }
+        tabla += "</table>";
+        document.getElementById("datos").innerHTML = tabla;
+
+        let linkD = "https://campusvirtual.pucesi.edu.ec/apidocentes/";
+        let linkA = "https://jsonplaceholder.typicode.com/posts/1/comments";
+        let linkB = "https://restcountries.com/v3.1/region/europe";
+
+
+        fetch(linkB)
+            .then(response => response.json())
+            .then(data => {
+                let tabla = "<table>";
+                for (const fila of data) {
+                    //let tr = document.createElement('tr');
+                    tabla += "<tr>";
+                    for (const atributo of Object.values(fila)) {
+
+                        /* let celda = document.createElement('td');
+                        celda.textContent = atributo;
+                        celda.style.border = "1px solid";
+                        tr.appendChild(celda); */
+                        tabla += "<td>" + atributo + "</td>";
+
+
+                    }
+                    tabla += "</tr>";
+                    //tr.appendChild(celda);
+                    //tabla.appendChild(tr);
+
+                }
+                tabla += "</table>";
+                //document.body.appendChild(tabla);
+                document.getElementById("datos1").innerHTML = tabla;
+
+            });
+
+
+       // console.log("Los datos de resp son: " + resp);
+
+        /*  function notificar(users) {
+             if (confirm("")) {
+                 alert("1");
+                 $.ajax({
+                     type: 'POST',
+                     url: linkD,
+                     data: "",
+                     dataType: 'json',
+                     success: function (data) {
+                         alert("2");
+                         console.log(data);
+ 
+                     },
+                     error: function () {
+                         const data = JSON.parse(users);
+                         console.log(data);
+                     }
+                 });
+             }
+         } */
+
+
+    </script>
+</body>
+<footer>
+</footer>

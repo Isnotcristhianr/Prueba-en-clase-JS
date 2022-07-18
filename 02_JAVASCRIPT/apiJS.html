@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/botones.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API JS FETCH</title>
+    <!-- JS -->
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery3.0.6.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container mt-4 shadow0-lg p3 mb-5 bg-boby rounded text-center">
+        <table class="table table-striped display" id="example" style="width:100%">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>EMAIL</th>
+                    <th>USUARIO</th>
+                    <th>VALIDAR</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/users',
+                type: 'GET',
+                success: function (data) {
+                    //PRIMERO SACAMOS LA INFORMACION, LUEGO LA MOSTRAMOS EN LA TABLA
+                    mostrarData(data);
+                    $('#example').DataTable();
+
+                },
+                error: function(xhr,status){
+                    alert("Perdone, existiÓ un error");
+                },
+                complete: function(xhr, status){
+                    //alert("Peticion realizado con exito");
+                }
+            });
+        });
+
+        //FETCH REALIZA LO MISMO QUE AJAX, MOSTRAR INFORMACION
+
+        /* let url = "https://jsonplaceholder.typicode.com/users";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => mostrarData(data)) */
+
+
+
+    </script>
+</body>
+
+</html>

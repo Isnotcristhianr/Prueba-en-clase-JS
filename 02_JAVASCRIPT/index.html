@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- INVOCACION DE CSS -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/botones.css" rel="stylesheet">
+<script src="assets/js/est.js"></script>
+<script src="assets/js/funciones.js"></script>
+<script src="assets/js/jquery3.0.6.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body class="container">
+    <h2> Primera Clase JS</h2>
+    <p>Bienvenidos</p>
+    <label># de cedula</label>
+    <input type="text" maxlength="10" placeholder="# CEDULA" id="ced1">
+    <br>
+    <input value="Aleatorio" type="button" id="random" class="btn btn-success">
+    <br>
+    <table>
+        <!-- TR para indicar las filas -->
+        <tr>
+            <!-- TD para indicar las columnas -->
+            <td><input value="1" onclick="number(1)" type="button" id="n1" class="style"></td>
+            <td><input value="2" onclick="number(2)" type="button" id="n2" class="style"></td>
+            <td><input value="3" onclick="number(3)" type="button" id="n3" class="style"></td>
+        </tr>
+        <tr>
+            <td><input value="4" onclick="number(4)" type="button" id="n4" class="style"></td>
+            <td><input value="5" onclick="number(5)" type="button" id="n5" class="style"></td>
+            <td><input value="6" onclick="number(6)" type="button" id="n6" class="style"></td>
+        </tr>
+    </table>
+
+    <label># CEDULA VALIDA</label>
+    <input type="text" placeholder="# CEDULA" id="cedV">
+    <div id="saludo"></div>
+    <h3>EVENTO DE HTML</h3>
+    <label>Evento onchange</label>
+    <input type="text" placeholder="# CEDULA" onchange="saludoCambio()" id="cedEv">
+
+    <div>
+        <input type="radio" name="color" value="Azul">Azul <br>
+        <input type="radio" name="color" value="Rojo">Rojo <br>
+        <input type="radio" name="color" value="Verde">Verde <br>
+        <input type="radio" name="color" value="Amarillo">Amarillo <br>
+        <input type="radio" name="color" value="Negro">Negro <br>
+        <button type="button" onclick="display()" class="btn btn-success">Ejecutar</button> <BR></BR>
+
+    </div>
+
+    <select name="colores" id="color_cuad">
+        <option value="white">--Sin Seleccionar--</option>
+        <option value="yellow">AMARILLO</option>
+        <option value="blue">AZUL</option>
+        <option value="red">ROJO</option>
+        <option value="green">VERDE</option>
+        <option value="black">NEGRO</option>
+
+    </select>
+    <br>
+    <label>COLOR SELECCIONADO</label>
+
+    <div class="cuadrado" id="cuad"></div>
+    <p id="demo"></p>
+    <br>
+    <p id="demo1"></p>
+    <br>
+    <p id="demo2"></p>
+    <br>
+    <p id="demo3"></p>
+    <select name="autos" id="carros">
+        <option value="NO SELECTED">--Sin Seleccionar--</option>
+        <option value="chevrolet">Chevrolet</option>
+        <option value="toyota">Toyota</option>
+        <option value="mazda">Mazda</option>
+        <option value="nissan">Nissan</option>
+    </select>
+    <script>
+        let resp = "";
+        $(document).ready(function () {
+            $("#random").click(function () {
+                alert("Hola, ya estoy listo");
+            });
+
+        });
+        let e = 15;// window.prompt("Ingrese su edad: ");
+        let ced = "1004072672";//window.prompt("Ingrese su numero de cedula");
+        const miEst = new est();
+        document.getElementById("demo").innerHTML = miEst.ingresar(e);
+        miEst.ver_cedula(ced);
+        document.getElementById("ced1").addEventListener("change", avisoCambio);
+
+        window.addEventListener("load", function () {
+            document.getElementById("cedV").addEventListener("keypress", soloNumeros, false);
+            document.getElementById("cedEv").addEventListener("keypress", soloNumeros, false);
+        });
+        $(document).ready(function () {
+            $("#carros").change(function () {
+                console.log(this.value);
+                alert("Opcion selecionada " + this.value);
+            });
+            $("#color_cuad").change(function () {
+                document.getElementById("cuad").style.backgroundColor = this.value;
+            });
+        });
+    </script>
+
+</body>
+<!-- INVOCACION DE LOS JS (SCRIPT) -->
+<footer>
+</footer>
+
+</html>
+<!-- DATOS  -->
+<!-- 
+LAS LIBRERIAS SON CREADAS CON POO
+LOS HELPERS SON CREADAS CON PROGRAMACION ESTRUCTURADA
+LOS EVENTOS SE REALIZAN EN EL FOOTER
+EN EL HEADER SOLO ESTAN LOS CSS, EN LOS BODY SON LAS HOJAS QUE MUESTRAN AL USUARIO, EN EL ASIDE LOS MENUS Y EN EL FOOTER LOS SCRIPTS
+ -->
